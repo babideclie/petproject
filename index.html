@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EXPOPET - A 100% free pet adoption platform built by two broke developers. Help us keep rescued animals online and give them a chance at a home.">
+    <title>EXPOPET - Help Us Save Them Before It's Too Late</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #b89fcd;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #b89fcd 0%, #9b7bb8 100%);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=1200&h=800&fit=crop') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: #ffffff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            margin-bottom: 20px;
+        }
+
+        .hero-text h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 500;
+            line-height: 1.5;
+            color: #ffff56;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 8px solid #ffff56;
+            border-radius: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffff56;
+            color: #1a1a1a;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 700;
+            padding: 25px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255,255,86,0.5);
+            animation: pulse 2s infinite;
+            border: 4px solid #90fca7;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255,255,86,0.7);
+            background: #f0f046;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Main Content */
+        .content-section {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .urgent-banner {
+            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+            border: 3px solid #ffff56;
+        }
+
+        .urgent-banner h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .urgent-banner p {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            line-height: 1.6;
+        }
+
+        .progress-section {
+            background: #b89fcd;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            border: 4px solid #90fca7;
+        }
+
+        .progress-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .progress-header h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .progress-amounts {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #ffff56;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 50px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffff56 0%, #90fca7 100%);
+            width: 62.5%;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 1.2rem;
+            transition: width 1s ease;
+        }
+
+        .story-section {
+            margin-bottom: 60px;
+        }
+
+        .story-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .story-content {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .story-content p {
+            margin-bottom: 20px;
+        }
+
+        .story-content strong {
+            color: #b89fcd;
+            font-weight: 700;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .benefit-card {
+            background: #b89fcd;
+            padding: 35px;
+            border-radius: 15px;
+            border: 4px solid #ffff56;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(184,159,205,0.4);
+        }
+
+        .benefit-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: #ffffff;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .donors-section {
+            background: #f5f5f5;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 60px 0;
+            border: 3px solid #90fca7;
+        }
+
+        .donors-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .donor-item {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #ffff56;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .donor-item span {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .donor-amount {
+            margin-left: auto;
+            color: #b89fcd;
+            font-weight: 700;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #b89fcd 0%, #9b7bb8 100%);
+        }
+
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .cta-section p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: #ffff56;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffff56;
+            margin-top: 30px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .cta-button {
+                display: block;
+                width: 100%;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Help me launch a 100% free pet adoption platform</h1>
+                <h2>I’m an indie developer who’s rescued street animals myself.  
+                    I got fed up watching the people who save dogs and cats with their own money being ignored by every existing site.  
+                    So I’m building Expopet: truly free forever, unlimited listings, direct donation buttons for independent rescuers, no fees. 
+                    I’m almost there… but I’ve run out of funds to finish and launch it.  
+                    Every coffee gets us closer to going live and finally giving lone rescuers the proper home they deserve.</h2>
+                <a href="http://buymeacoffee.com/expopet.en" class="cta-button" target="_blank">Buy me a coffee ☕ Keep The Project Alive</a>
+            </div>
+            <div class="hero-image">
+                <img src="dog.jpg" alt="Rescue dog looking at camera with hopeful eyes">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="container">
+            <!-- Urgent Banner -->
+            <div class="urgent-banner">
+                <h3>⚠️ The final push to get Expopet live ⚠️</h3>
+                <p>I’m in the last stretch of development and need one last bit of help with server costs and launch expenses so it can go online for good.</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-section">
+                <div class="progress-header">
+                    <h3>So Close</h3>
+                    <div class="progress-amounts">£1,250 raised of £2,000 final stretch</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill">62.5%</div>
+                </div>
+                <p style="text-align: center; color: #ffffff; font-size: 1.1rem;">Just £750 to go and we launch</p>
+            </div>
+
+            <!-- Story Section -->
+            <div class="story-section">
+                <h2>Why We’re Doing This</h2>
+                <div class="story-content">
+                    <p>I’m not a charity. I’m not a big company. I’m just one indie developer who’s rescued street dogs and cats myself and got absolutely sick of watching the real rescuers being ignored.</p>
+    
+                    <p>The people who pull animals from ditches at midnight, who skip their own meals to buy wormers, who sleep on the floor so the dogs can have the sofa… they’ve got nowhere proper to post animals for free. Facebook buries the posts in hours. Gumtree wants money. The big sites couldn’t care less.</p>
+    
+                    <p>That’s why I’m building Expopet. It will be <strong>100% free forever</strong>. Anyone can list as many animals as they want. No fees, no premium b******t, no middleman taking a cut. Just rescued animals finally being seen and the rescuers who pay out of their own pocket getting proper donation buttons.</p>
+    
+                    <p>I’m literally days from launching the beta… but I’ve run out of money completely.</p>
+    
+                    <p>I need your help — not because I like asking, but because these animals and the humans saving them with their own wages deserve better than staying invisible.</p>
+                </div>
+            </div>
+
+            <!-- Benefits Grid -->
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>🏠 100% Free Forever</h3>
+                    <p>Every adopter and independent rescuer can post unlimited animals. No charges. No tricks. Just free.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>❤️ Direct Donations to Rescuers</h3>
+                    <p>Small rescuers who pay everything out of pocket get donation buttons on their profiles. Every penny goes straight to them.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🌍 Every Animal Seen</h3>
+                    <p>From Manchester to Cornwall, every rescued dog and cat in the UK will finally have a proper platform. Later, the world.</p>
+                </div>
+                
+            </div>
+
+            <!-- Recent Donors -->
+            <div class="donors-section">
+                <h3>❤️ Recent Heroes</h3>
+                <div class="donor-item">
+                    <span>🙏 Maria in Manchester just bought</span>
+                    <span class="donor-amount">5 coffees ❤️</span>
+                </div>
+                <div class="donor-item">
+                    <span>🙏 Anonymous bought</span>
+                    <span class="donor-amount">10 coffees!</span>
+                </div>
+                <div class="donor-item">
+                    <span>🙏 James in Bristol just bought</span>
+                    <span class="donor-amount">3 coffees ❤️</span>
+                </div>
+                <div class="donor-item">
+                    <span>🙏 Sarah bought</span>
+                    <span class="donor-amount">8 coffees!</span>
+                </div>
+                <div class="donor-item">
+                    <span>🙏 Anonymous in London just bought</span>
+                    <span class="donor-amount">15 coffees ❤️❤️❤️</span>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div style="text-align: center; margin: 60px 0;">
+                <a href="http://buymeacoffee.com/expopet.en" class="cta-button" target="_blank" style="font-size: 1.5rem;">Buy me a coffee ☕ to save them</a>
+            </div>
+
+            <!-- What Your Donation Does -->
+            <div class="story-section">
+                <h2>What Your £3 Does</h2>
+                <div class="story-content">
+                    <p>What your coffee actually does:</p>
+                    
+                    <p><strong>£3 (1 coffee)</strong> = covers domain + basic hosting<br>
+                    <strong>£15 (5 coffees)</strong> = pays for SSL certificate + Cloudflare so the site stays fast and secure<br>
+                    <strong>£30 (10 coffees)</strong> = runs targeted Instagram/Facebook ads to reach 50–100 independent rescuers who don’t know about us yet<br>
+                    <strong>£75+</strong> = You're keeping EXPOPET alive</p>
+                    
+                    <p>I'm not asking for thousands. I'm asking for enough to keep the lights on. Because right now, <strong>I’m making the one platform that doesn’t ignore the independent rescuers... it puts them front and centre.</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta-section">
+        <h2>Don’t let Expopet die before it’s even born</h2>
+        <p>Every dog sleeping rough tonight. Every cat abandoned in a car park. They all deserve to be seen. To have a chance. But only if EXPOPET stays online.</p>
+        <a href="http://buymeacoffee.com/expopet.en" class="cta-button" target="_blank" style="font-size: 1.8rem;">Buy Me a Coffee ☕ Keep The Project Alive</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><strong>Be the reason a street dog sleeps indoors tonight instead of under a car.</strong></p>
+        <p>Every coffee matters. Every share matters. Every animal matters.</p>
+        <p>Thank you for caring.</p>
+        <div class="footer-logo">©EXPOPET</div>
+    </footer>
+
+    <script>
+        // Animate progress bar on load
+        window.addEventListener('load', function() {
+            const progressBar = document.querySelector('.progress-bar-fill');
+            progressBar.style.width = '0%';
+            setTimeout(() => {
+                progressBar.style.width = '62.5%';
+            }, 500);
+        });
+
+        // Animate donor items on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideIn 0.5s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.donor-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

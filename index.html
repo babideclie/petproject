@@ -198,7 +198,7 @@
         .progress-bar-fill {
             height: 100%;
             background: linear-gradient(90deg, #ffff56 0%, #90fca7 100%);
-            width: 62.5%;
+            width: 35.7%;
             border-radius: 25px;
             display: flex;
             align-items: center;
@@ -230,7 +230,7 @@
         }
 
         .story-content p {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .story-content strong {
@@ -244,6 +244,24 @@
             gap: 30px;
             margin: 60px 0;
         }
+
+        .img-demo {
+            margin-top: -120px;
+            width: 100%;
+            background: #ffffff;
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .img-demo img {
+             max-width: 100%;      /* nunca passa da tela */
+             height: auto;         /* mantém proporção */
+             display: block;
+             border-radius: 12px;  /* opcional, só pra ficar bonito */
+        }
+
 
         .benefit-card {
             background: #b89fcd;
@@ -418,13 +436,13 @@
             <!-- Progress Bar -->
             <div class="progress-section">
                 <div class="progress-header">
-                    <h3>So Close</h3>
-                    <div class="progress-amounts">£1,250 raised of £2,000 final stretch</div>
+                    <h3>Almost There</h3>
+                    <div class="progress-amounts">£1,250 raised of £3,500 final stretch</div>
                 </div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar-fill">62.5%</div>
+                    <div class="progress-bar-fill">35.7%</div>
                 </div>
-                <p style="text-align: center; color: #ffffff; font-size: 1.1rem;">Just £750 to go and we launch</p>
+                <p style="text-align: center; color: #ffffff; font-size: 1.1rem;">Just £2,250 to go and we launch</p>
             </div>
 
             <!-- Story Section -->
@@ -464,24 +482,24 @@
             <div class="donors-section">
                 <h3>❤️ Recent Heroes</h3>
                 <div class="donor-item">
-                    <span>🙏 Maria in Manchester just bought</span>
-                    <span class="donor-amount">5 coffees ❤️</span>
+                    <span>🙏 Marli Pulicarpo in Wales just bought</span>
+                    <span class="donor-amount">4 coffees! ❤️</span>
                 </div>
                 <div class="donor-item">
                     <span>🙏 Anonymous bought</span>
-                    <span class="donor-amount">10 coffees!</span>
+                    <span class="donor-amount">3 coffees! ❤️</span>
                 </div>
                 <div class="donor-item">
-                    <span>🙏 James in Bristol just bought</span>
-                    <span class="donor-amount">3 coffees ❤️</span>
+                    <span>🙏 Thiago Gaia in Floripa/Brazil just bought</span>
+                    <span class="donor-amount">20 coffees! ❤️</span>
                 </div>
                 <div class="donor-item">
-                    <span>🙏 Sarah bought</span>
-                    <span class="donor-amount">8 coffees!</span>
+                    <span>🙏 Anonymous bought</span>
+                    <span class="donor-amount">7 coffees! ❤️</span>
                 </div>
                 <div class="donor-item">
-                    <span>🙏 Anonymous in London just bought</span>
-                    <span class="donor-amount">15 coffees ❤️❤️❤️</span>
+                    <span>🙏 Anonymous bought</span>
+                    <span class="donor-amount">4 coffees! ❤️</span>
                 </div>
             </div>
 
@@ -496,14 +514,20 @@
                 <div class="story-content">
                     <p>What your coffee actually does:</p>
                     
-                    <p><strong>£3 (1 coffee)</strong> = covers domain + basic hosting<br>
-                    <strong>£15 (5 coffees)</strong> = pays for SSL certificate + Cloudflare so the site stays fast and secure<br>
-                    <strong>£30 (10 coffees)</strong> = runs targeted Instagram/Facebook ads to reach 50–100 independent rescuers who don’t know about us yet<br>
-                    <strong>£75+</strong> = You're keeping EXPOPET alive</p>
+                    <p><strong>35% </strong> = Development & Polish <br>
+                    <strong>30% </strong> = UK Launch Marketing<br>
+                    <strong>25% </strong> = Team & Servers<br>
+                    <strong>10% </strong> = Legal</p>
                     
-                    <p>I'm not asking for thousands. I'm asking for enough to keep the lights on. Because right now, <strong>I’m making the one platform that doesn’t ignore the independent rescuers... it puts them front and centre.</strong>.</p>
+                    <p>I'm not asking for thousands. I'm asking for enough to keep the lights on. Because right now, <strong>I’m making the one platform that doesn’t ignore the independent rescuers... it puts them front and centre.</strong>.
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="img-demo">
+        <div>
+            <img src="Expopet_pdf_project.png" alt="demo">
         </div>
     </section>
 
@@ -528,7 +552,7 @@
             const progressBar = document.querySelector('.progress-bar-fill');
             progressBar.style.width = '0%';
             setTimeout(() => {
-                progressBar.style.width = '62.5%';
+                progressBar.style.width = '35.7%';
             }, 500);
         });
 
